@@ -4,48 +4,70 @@ import { FormTable } from "@/components/app_components/form-table";
 import { Button } from "@/components/ui/button";
 import * as React from "react";
 import { handler } from "./lib/agent";
+import { useToast } from "@/components/ui/use-toast";
 
 export default function Home() {
+	const { toast } = useToast();
 	const [fields, setValues] = React.useState([
 		{
-			field: "Diastoic Blood Pressure",
+			field: "Gender",
 			value: "",
 			id: 1,
 		},
 		{
-			field: "Triceps Skin Fold Thickness",
+			field: "Age",
 			value: "",
 			id: 2,
 		},
 		{
-			field: "Serum Insulin",
+			field: "Smoker",
 			value: "",
 			id: 3,
 		},
 		{
-			field: "BMI",
+			field: "Cigarettes per day",
 			value: "",
 			id: 4,
 		},
 		{
-			field: "Diabetes Pedigree Function",
+			field: "Blood Pressure Medication",
 			value: "",
 			id: 5,
 		},
 		{
-			field: "Age",
+			field: "Diabetes",
 			value: "",
 			id: 6,
 		},
 		{
-			field: "Pregnancies",
+			field: "Cholesterol",
 			value: "",
 			id: 7,
 		},
 		{
-			field: "Glucose",
+			field: "Systolic Blood Pressure",
 			value: "",
 			id: 8,
+		},
+		{
+			field: "Diastolic Blood Pressure",
+			value: "",
+			id: 9,
+		},
+		{
+			field: "BMI",
+			value: "",
+			id: 10,
+		},
+		{
+			field: "Heart Rate",
+			value: "",
+			id: 11,
+		},
+		{
+			field: "Glucose",
+			value: "",
+			id: 12,
 		},
 	]);
 
@@ -66,7 +88,13 @@ export default function Home() {
 				className="w-40 h-10 bg-primary text-primary-foreground rounded-lg flex items-center justify-center shadow-2xl cursor-pointer"
 				onClick={async () => {
 					console.log("clicked");
-					console.log(await handler.predict(fields));
+					// console.log(await handler.predictBingChat(fields));
+					const data = await handler.predictBard(fields);
+
+					toast({
+						title: "Diabetes Rate: ",
+						description: data,
+					});
 				}}
 			>
 				Predict

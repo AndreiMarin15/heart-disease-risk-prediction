@@ -4,7 +4,7 @@ import "./globals.css";
 import { cn } from "@/lib/utils";
 import { ModeToggle } from "@/components/app_components/mode-toggle";
 import { ThemeProvider } from "@/components/theme-provider";
-
+import { Toaster } from "@/components/ui/toaster";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
@@ -23,6 +23,7 @@ export default function RootLayout({
 				<ThemeProvider attribute="class" defaultTheme="system" enableSystem disableTransitionOnChange>
 					<ModeToggle />
 					<div className="flex items-center justify-center h-screen">{children}</div>
+					<Toaster />
 				</ThemeProvider>
 			</body>
 		</html>

@@ -5,6 +5,7 @@ import { Button } from "@/components/ui/button";
 import * as React from "react";
 import { handler } from "./lib/agent";
 import { useToast } from "@/components/ui/use-toast";
+import { ScrollArea } from "@/components/ui/scroll-area";
 
 export default function Home() {
 	const { toast } = useToast();
@@ -81,8 +82,10 @@ export default function Home() {
 
 	return (
 		<div className="flex flex-col items-center justify-center gap-10">
-			<div className="w-full border rounded-lg p-5 shadow-2xl">
-				<FormTable fields={fields} setValues={setValue} />
+			<div className="w-full border rounded-lg py-5 px-1shadow-2xl">
+				<ScrollArea className="h-[36rem] px-10">
+					<FormTable fields={fields} setValues={setValue} />
+				</ScrollArea>
 			</div>
 			<div
 				className="w-40 h-10 bg-primary text-primary-foreground rounded-lg flex items-center justify-center shadow-2xl cursor-pointer"
